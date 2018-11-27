@@ -1,0 +1,27 @@
+
+{% include 'header.html' %}
+{% include 'nav.html' %}
+
+<body class="text-center">
+
+    <form class="form-signin" method="post" action="{{ url_for('login') }}">
+      {{ form.hidden_tag() }}
+
+      <label for="inputEmail" class="sr-only">Username</label>
+      <input type="text" name="username" id="username" class="form-control" placeholder="Username" required autofocus>
+
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+      {% for error in form.username.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
+
+      <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </br><p>New User? <a href="{{ url_for('register') }}">Click to Register</a></p></br>
+      <p class="mt-5 mb-3 text-muted"><small>Copyright &copy; 2018</small></p>
+    </form>
+
+</body>
+
+{% include 'footer.html' %}
