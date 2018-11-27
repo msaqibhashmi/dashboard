@@ -1,38 +1,42 @@
 {% include 'header.html' %}
 {% include 'nav.html' %}
 
-
 <body class="text-center">
     
     <form class="form-signin" action="/register" method="post">
-        <input id="csrf_token" name="csrf_token" type="hidden" value="IjE2MmViNTgxMTY4Y2RiYTRkY2YxNjgxYzk2NzVmNjM0OGIyZGYyZDIi.W_wmOA.LDreDp3qjqp9rtDyvPEyIBP4av8">
+      {{ form.hidden_tag() }}
 
       <label for="inputUsername" class="sr-only">Username</label>
       <input type="text" name="username" id="username" class="form-control" placeholder="Username" required autofocus>
-            {% for error in form.username.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-
 
       <label for="inputEmail" class="sr-only">Email</label>
       <input type="text" name="email" id="email" class="form-control" placeholder="Email address" required autofocus>
-            {% for error in form.email.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-
-
 
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
-            {% for error in form.password.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
 
       <label for="inputPassword2" class="sr-only">Repeat Password</label>
       <input type="password" id="password2" name="password2" class="form-control" placeholder="Password" required>
-            {% for error in form.password2.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
+
+      {% for error in form.username.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
+
+      </br>
+
+      {% for error in form.email.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
+
+      </br>
+
+      {% for error in form.password.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
+
+      {% for error in form.password2.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
 
       <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
       </br><p>Already a User? <a href="{{ url_for('login') }}">Click to Login</a></p></br>

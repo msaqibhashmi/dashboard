@@ -12,8 +12,9 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Sign In')
 
     def validate_username(self, username):
+        form = LoginForm()
         user = User.objects(username=username.data).first()
-        if user is None:
+        if user is None or not user.check_password(form.password.data):
             raise ValidationError('Invalid username or password')
 
 
