@@ -1,2 +1,1 @@
-# OTT-Manager
-
+# Dashboard Template
