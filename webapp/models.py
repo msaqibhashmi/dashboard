@@ -9,7 +9,6 @@ class User(UserMixin, db.Document):
     email = db.StringField(max_length=120)
     password_hash = db.StringField(max_length=128)
 
-
     def __repr__(self):
         return '<User {}>'.format(self.username)
 
